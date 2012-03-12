@@ -31,16 +31,19 @@ Scenario: restrict to movies with 'PG' or 'R' ratings
   And I should not see "Chocolat"
   And I should not see "2001: A Space Odyssey"
   And I should not see "Chicken Run"
-
-
-  # enter step(s) to check the 'PG' and 'R' checkboxes
-  # enter step(s) to uncheck all other checkboxes
-  # enter step to "submit" the search form on the homepage
-  # enter step(s) to ensure that PG and R movies are visible
-  # enter step(s) to ensure that other movies are not visible
+  And I should see "The Terminator"
+  And I should see "When Harry Met Sally"
+  And I should see "Amelie"
+  And I should see "The Incredibles"
+  And I should see "Raiders of the Lost Ark"
 
 Scenario: no ratings selected
   # see assignment
 
 Scenario: all ratings selected
+  Given I check the following ratings: G,PG,PG-13,R
+
+  And I press "Refresh"
+
+  Then I should see all of the movies
   # see assignment
