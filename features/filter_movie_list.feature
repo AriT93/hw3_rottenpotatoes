@@ -26,8 +26,10 @@ Scenario: restrict to movies with 'PG' or 'R' ratings
   And I check "ratings[R]"
   And I press "Refresh"
 
-  Then I should not see "G"
-  And I should not see "PG-13"
+  Then I should not see:
+  |G|
+  |PG-13|
+
   # enter step(s) to check the 'PG' and 'R' checkboxes
   # enter step(s) to uncheck all other checkboxes
   # enter step to "submit" the search form on the homepage
