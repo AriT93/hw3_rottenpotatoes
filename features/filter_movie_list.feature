@@ -26,9 +26,12 @@ Scenario: restrict to movies with 'PG' or 'R' ratings
   And I check "ratings[R]"
   And I press "Refresh"
 
-  Then I should not see:
-  |G|
-  |PG-13|
+  Then I should not see "Aladdin"
+  And I should not see "The Help"
+  And I should not see "Chocolat"
+  And I should not see "2001: A Space Odyssey"
+  And I should not see "Chicken Run"
+
 
   # enter step(s) to check the 'PG' and 'R' checkboxes
   # enter step(s) to uncheck all other checkboxes
