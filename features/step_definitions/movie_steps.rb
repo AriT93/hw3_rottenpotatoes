@@ -12,10 +12,12 @@ end
 # Make sure that one string (regexp) occurs before or after another one
 #   on the same page
 
-Then /I should see "(.*)" before "(.*)"/ do |e1, e2|
+Then /I should see "(.*)" before "(.*)"$/ do |e1, e2|
   #  ensure that that e1 occurs before e2.
   #  page.content  is the entire content of the page as a string.
-  assert false, "Unimplmemented"
+  pattern = ".*#{e1}.*#{e2}.*"
+  pattern = Regexp.compile(pattern, Regexp::MULTILINE)
+  assert page.body =~ pattern, "no matches found"
 end
 
 # Make it easier to express checking or unchecking several boxes at once
@@ -33,6 +35,10 @@ end
 
 Then /I should see all of the movies/ do
   rows = find("table#movies/tbody").all('tr')
-  p rows.count
   assert rows.count == 10, "Incorrect number of rows showing expect 10"
+end
+
+Then /I should see no movies/ do
+  rows = find("table#movies/tbody").all('tr')
+  assert rows.count == 0, "Incorrect number of rows showing expect 0"
 end

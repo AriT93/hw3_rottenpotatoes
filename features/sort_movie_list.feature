@@ -1,11 +1,11 @@
 Feature: display list of movies sorted by different criteria
- 
+
   As an avid moviegoer
   So that I can quickly browse movies based on my preferences
   I want to see movies sorted by title or release date
 
 Background: movies have been added to database
-  
+
   Given the following movies exist:
   | title                   | rating | release_date |
   | Aladdin                 | G      | 25-Nov-1992  |
@@ -22,8 +22,17 @@ Background: movies have been added to database
   And I am on the RottenPotatoes home page
 
 Scenario: sort movies alphabetically
-  # your steps here
+  Given I check the following ratings: PG,R
+
+  And I press "Refresh"
+
+  When I follow "title_header"
+
+  Then I should see "Amelie" before "The Incredibles"
 
 Scenario: sort movies in increasing order of release date
+  Given I check the following ratings: PG,R
+  And I press "Refresh"
+  When I follow "release_date_header"
+  Then I should see "When Harry Met Sally" before "Amelie"
   # your steps here
-
