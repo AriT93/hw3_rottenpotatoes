@@ -28,7 +28,7 @@ Scenario: sort movies alphabetically
 
   When I follow "title_header"
 
-  Then I should see "Amelie" before "The Incredibles"
+  Then I should see "2001-04-25" before "The Incredibles"
 
 Scenario: sort movies in increasing order of release date
   Given I check the following ratings: PG,R
