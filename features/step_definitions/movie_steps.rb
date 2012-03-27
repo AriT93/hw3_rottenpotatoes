@@ -42,3 +42,8 @@ Then /I should see no movies/ do
   rows = find("table#movies/tbody").all('tr')
   assert rows.count == 0, "Incorrect number of rows showing expect 0"
 end
+Then /^the director of "([^"]*)" should be "([^"]*)"$/ do |arg1, arg2|
+  pattern =".*#{arg1}.*#{arg2}.*"
+  pattern = Regexp.compile(pattern, Regexp::MULTILINE)
+  assert_match(pattern, page.body)
+end
